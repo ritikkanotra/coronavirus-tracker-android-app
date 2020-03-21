@@ -43,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
     private String CURRENT_VERSION;
     private String realVersion;
+    private String updateChanges;
     private String realVersionDownloadUrl;
     private DatabaseReference mDatabaseRef;
     private AdView mAdView;
+    private String editedChanges;
     private ProgressDialog updateProgressDialog;
 
     @Override
@@ -79,6 +81,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final String[][] newChanges = new String[1][1];
+
+        mDatabaseRef.child("app_version").child("version_change").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                updateChanges = dataSnapshot.getValue().toString();
+                Log.i("testing", updateChanges);
+
+                newChanges[0] = updateChanges.split("///");
+                editedChanges = "";
+                for(int i = 0; i < newChanges[0].length; i++) {
+                    editedChanges += (i + 1) + ". " +  newChanges[0][i] + "\n";
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
         realVersionDownloadUrl = getRealVersionDownloadUrl();
 
 
@@ -107,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         if(!realVersion.equals(CURRENT_VERSION)) {
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setTitle("Update Available").setMessage("New version Available");
+            builder.setTitle("Update Available").setMessage(editedChanges);
 
             builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
                 @Override
@@ -238,6 +267,5 @@ public class MainActivity extends AppCompatActivity {
         return currentVersion;
 
     }
-
 
 }
