@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/current_country_name"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="China"/>
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/holo_blue_dark"
+            android:id="@+id/current_country_cases"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="80894 C"/>
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/holo_red_light"
+            android:id="@+id/current_country_deaths"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="3237 D"/>
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/holo_green_light"
+            android:id="@+id/current_country_recovered"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="69614 R"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
