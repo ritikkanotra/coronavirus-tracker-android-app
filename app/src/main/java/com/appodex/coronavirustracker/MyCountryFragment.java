@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class MyCountryFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<CountryStats>> {
 
-    private TextView countryNameTextView;
+//    private TextView countryNameTextView;
     private TextView countryCasesTextView;
     private TextView countryDeathsTextView;
     private TextView countryRecoveredTextView;
@@ -36,7 +36,7 @@ public class MyCountryFragment extends Fragment implements LoaderManager.LoaderC
 
         View view = inflater.inflate(R.layout.activity_my_country_fragment, container, false);
 
-        countryNameTextView = view.findViewById(R.id.country_name_text_view);
+//        countryNameTextView = view.findViewById(R.id.country_name_text_view);
         countryCasesTextView = view.findViewById(R.id.country_cases_text_view);
         countryDeathsTextView = view.findViewById(R.id.country_death_text_view);
         countryRecoveredTextView = view.findViewById(R.id.country_recovered_text_view);
@@ -73,7 +73,7 @@ public class MyCountryFragment extends Fragment implements LoaderManager.LoaderC
         String active = myCountryStats.getActive();
         String critical = myCountryStats.getCritical();
 
-        countryNameTextView.setText(countryName);
+//        countryNameTextView.setText(countryName);
         countryCasesTextView.setText(cases);
         countryDeathsTextView.setText(deaths);
         countryRecoveredTextView.setText(recovered);

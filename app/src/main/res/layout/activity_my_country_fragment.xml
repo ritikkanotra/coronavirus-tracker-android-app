@@ -12,14 +12,14 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/country_name_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="China"
-            android:textColor="@android:color/black"
-            android:textSize="25dp" />
+<!--        <TextView-->
+<!--            android:id="@+id/country_name_text_view"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:text="China"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textSize="25dp" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                     android:id="@+id/country_cases_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="80894"
+                    android:text="0"
                     android:textColor="#4b41d3"
                     android:textSize="40sp" />
 
@@ -75,7 +75,7 @@
                     android:id="@+id/country_death_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3237"
+                    android:text="0"
                     android:textColor="@android:color/holo_red_light"
                     android:textSize="40sp" />
 
@@ -114,7 +114,7 @@
                     android:id="@+id/country_recovered_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="69614"
+                    android:text="0"
                     android:textColor="#1d8c28"
                     android:textSize="40sp" />
 
@@ -152,8 +152,7 @@
                         android:id="@+id/country_active_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="8043"
-                        android:textStyle="italic" />
+                        android:text="0" />
 
                 </LinearLayout>
 
@@ -177,8 +176,7 @@
                         android:id="@+id/country_critical_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2622"
-                        android:textStyle="italic" />
+                        android:text="0" />
 
                 </LinearLayout>
 
@@ -238,7 +236,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:text="13"
+                    android:text="0"
                     android:textColor="@android:color/holo_blue_dark"
                     android:textSize="28sp" />
 
@@ -248,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:text="11"
+                    android:text="0"
                     android:textColor="@android:color/holo_red_light"
                     android:textSize="28sp" />
 

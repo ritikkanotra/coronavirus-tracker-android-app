@@ -47,7 +47,7 @@ public class CategoryAdapter extends FragmentPagerAdapter {
             return "Countries";
         }
         else {
-            return "My Country";
+            return "India";
         }
     }
 }
