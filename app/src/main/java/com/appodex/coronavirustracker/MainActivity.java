@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         CURRENT_VERSION = getCurrentVersion();
         checkPermissions();
 
+        realVersion = null;
+
         MobileAds.initialize(this, "ca-app-pub-9411377262346590~7252394518");
 
         mAdView = findViewById(R.id.adView);
@@ -133,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkVersion() {
 
-        if(!realVersion.equals(CURRENT_VERSION)) {
+        if(realVersion != null && !realVersion.equals(CURRENT_VERSION)) {
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Update Available").setMessage(editedChanges);
