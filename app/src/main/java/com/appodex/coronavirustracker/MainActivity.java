@@ -27,6 +27,7 @@ import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
     private String editedChanges;
     private ProgressDialog updateProgressDialog;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         realVersion = null;
 
         MobileAds.initialize(this, "ca-app-pub-9411377262346590~7252394518");
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-9411377262346590/7301701253");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -157,6 +163,8 @@ public class MainActivity extends AppCompatActivity {
             });
 
             AlertDialog dialog = builder.create();
+            dialog.setCancelable(false);
+            dialog.setCanceledOnTouchOutside(false);
             dialog.show();
 
         }
@@ -270,4 +278,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.i("testing", "BACK pressed");
+
+        if(mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
+
+    }
 }

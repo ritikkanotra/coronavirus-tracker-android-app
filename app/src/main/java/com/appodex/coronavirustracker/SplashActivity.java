@@ -6,15 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN_TIMEOUT = 1000;
+    private TextView currentVersionTextView;
+    private String currentVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,16 @@ public class SplashActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        try {
+            PackageInfo packageInfo = SplashActivity.this.getPackageManager().getPackageInfo(getPackageName(), 0);
+            currentVersion = packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        currentVersionTextView = findViewById(R.id.current_version_text_view);
+        currentVersionTextView.setText("v" + currentVersion);
 
 
         isInternetConnected();

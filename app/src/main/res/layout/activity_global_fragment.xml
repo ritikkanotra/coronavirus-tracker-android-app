@@ -14,11 +14,12 @@
         android:textSize="18sp"/>
 
     <TextView
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="#4b41d3"
         android:id="@+id/global_cases_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
+        android:fontFamily="sans-serif-condensed-medium"
         android:layout_marginBottom="24dp"
         android:textSize="64sp"/>
 
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
+        android:fontFamily="sans-serif-condensed-medium"
         android:textColor="@android:color/holo_red_light"
         android:layout_marginBottom="24dp"
         android:textSize="64sp"/>
@@ -44,7 +46,8 @@
         android:text="Total Recovered"/>
 
     <TextView
-        android:textColor="@android:color/holo_green_light"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="#1d8c28"
         android:id="@+id/global_recovered_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,7 +1,9 @@
 package com.appodex.coronavirustracker;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.transition.Fade;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,6 +24,9 @@ import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.ArrayList;
 
 public class CountriesFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<CountryStats>> {
@@ -30,6 +35,7 @@ public class CountriesFragment extends Fragment implements LoaderManager.LoaderC
     private CountryAdapter mAdapter;
     private ListView listView;
     private LinearLayout linearLayout1;
+    private AdView countryPopupAd;
 //    private ArrayList<CountryStats> country;
 
 
@@ -58,15 +64,7 @@ public class CountriesFragment extends Fragment implements LoaderManager.LoaderC
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
-
-
-
-
-
                 CountryStats currentCountryStats = countries.get(position);
-
-
 
 
                 LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -93,7 +91,16 @@ public class CountriesFragment extends Fragment implements LoaderManager.LoaderC
                 countryTodayDeaths.setText(currentCountryStats.getTodayDeaths());
 
 
-                final PopupWindow popupWindow = new PopupWindow(customView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                countryPopupAd = customView.findViewById(R.id.country_popup_ad);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                countryPopupAd.loadAd(adRequest);
+
+
+
+                final PopupWindow popupWindow = new PopupWindow(
+                        customView,
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
                 popupWindow.showAtLocation(linearLayout1, Gravity.CENTER, 0, 0);
 
 
