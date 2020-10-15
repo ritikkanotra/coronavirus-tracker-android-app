@@ -306,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.item_about:
                 Intent intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
         }
 
