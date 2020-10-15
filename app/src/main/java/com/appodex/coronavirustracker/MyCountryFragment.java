@@ -1,5 +1,14 @@
 package com.appodex.coronavirustracker;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +17,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MyCountryFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<CountryStats>> {
+public class MyCountryFragment extends Fragment implements LoaderManager.LoaderCallbacks<ArrayList<CountryStats>>, LocationListener {
 
 //    private TextView countryNameTextView;
     private TextView countryCasesTextView;
@@ -25,11 +36,17 @@ public class MyCountryFragment extends Fragment implements LoaderManager.LoaderC
     private TextView countryTodayCases;
     private TextView countryTodayDeaths;
 
+    private Location gpsLoc = null, networkLoc = null, finalLoc = null;
+
+    private Double latitude = null, longitude = null;
+
+    private String myCountry = null;
 
     public MyCountryFragment() {
 
     }
 
+    @SuppressLint("MissingPermission")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +63,30 @@ public class MyCountryFragment extends Fragment implements LoaderManager.LoaderC
         countryTodayDeaths = view.findViewById(R.id.country_today_deaths);
 
 
+
+        LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
+
+        try {
+            gpsLoc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            networkLoc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (gpsLoc != null) {
+            finalLoc = gpsLoc;
+        }
+        else if (networkLoc != null) {
+            finalLoc = networkLoc;
+        }
+
+        if(finalLoc != null) {
+            onLocationChanged(finalLoc);
+            myCountry = getCountryName(finalLoc);
+        }
+
+
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.initLoader(2, null, MyCountryFragment.this);
 
@@ -57,7 +98,7 @@ public class MyCountryFragment extends Fragment implements LoaderManager.LoaderC
     @NonNull
     @Override
     public Loader<ArrayList<CountryStats>> onCreateLoader(int id, @Nullable Bundle args) {
-        return new BackgroundTask(getContext(), "https://coronavirus-19-api.herokuapp.com/countries", 2);
+        return new BackgroundTask(getContext(), "https://coronavirus-19-api.herokuapp.com/countries", myCountry, 2);
     }
 
     @Override
@@ -89,4 +130,41 @@ public class MyCountryFragment extends Fragment implements LoaderManager.LoaderC
     public void onLoaderReset(@NonNull Loader<ArrayList<CountryStats>> loader) {
 
     }
+
+    private String getCountryName(Location location) {
+
+        String country = null;
+
+        try {
+            Geocoder geocoder = new Geocoder(getContext());
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            country = addresses.get(0).getCountryName();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return country;
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
+
 }

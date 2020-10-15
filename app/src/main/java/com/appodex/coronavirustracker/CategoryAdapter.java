@@ -30,6 +30,9 @@ public class CategoryAdapter extends FragmentPagerAdapter {
         else {
             return new MyCountryFragment();
         }
+//        else {
+//            return new StateFragment();
+//        }
     }
 
     @Override
@@ -46,8 +49,12 @@ public class CategoryAdapter extends FragmentPagerAdapter {
         else if(position == 1) {
             return "Countries";
         }
+
         else {
             return "India";
         }
+//        else {
+//            return "States";
+//        }
     }
 }

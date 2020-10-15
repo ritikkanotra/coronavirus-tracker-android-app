@@ -27,7 +27,7 @@ public class BackgroundTask extends AsyncTaskLoader<ArrayList<CountryStats>> {
 
 //    private String stringUrl = "https://coronavirus-19-api.herokuapp.com/all";
 
-    String mStringUrl;
+    String mStringUrl, mMyCountry;
     int mTask;
 
 
@@ -35,6 +35,13 @@ public class BackgroundTask extends AsyncTaskLoader<ArrayList<CountryStats>> {
         super(context);
         mStringUrl = url;
         mTask = task;
+    }
+
+    public BackgroundTask(@NonNull Context context, String url, String myCountry, int task) {
+        super(context);
+        mStringUrl = url;
+        mTask = task;
+        mMyCountry = myCountry;
     }
 
     @Nullable
@@ -74,15 +81,51 @@ public class BackgroundTask extends AsyncTaskLoader<ArrayList<CountryStats>> {
                 for(int i = 0; i < rootJsonArray.length(); i++) {
 
                     JSONObject countryJsonObject = rootJsonArray.getJSONObject(i);
-                    values.add(new CountryStats(countryJsonObject.getString("country"),
-                            Integer.toString(countryJsonObject.getInt("cases")),
-                            Integer.toString(countryJsonObject.getInt("todayCases")),
-                            Integer.toString(countryJsonObject.getInt("deaths")),
-                            Integer.toString(countryJsonObject.getInt("todayDeaths")),
-                            Integer.toString(countryJsonObject.getInt("recovered")),
-                            Integer.toString(countryJsonObject.getInt("active")),
-                            Integer.toString(countryJsonObject.getInt("critical"))));
+
+                    String countryName = "--";
+                    String cases = "--";
+                    String todayCases = "--";
+                    String deaths = "--";
+                    String todayDeaths = "--";
+                    String recovered = "--";
+                    String active = "--";
+                    String critical = "--";
+
+                    countryName = countryJsonObject.getString("country");
+
+                    if (!countryJsonObject.isNull("cases")) {
+                        cases = Integer.toString(countryJsonObject.getInt("cases"));
+                    }
+                    if (!countryJsonObject.isNull("todayCases")) {
+                        todayCases = Integer.toString(countryJsonObject.getInt("todayCases"));
+                    }
+                    if (!countryJsonObject.isNull("deaths")) {
+                        deaths = Integer.toString(countryJsonObject.getInt("deaths"));
+                    }
+                    if (!countryJsonObject.isNull("todayDeaths")) {
+                        todayDeaths = Integer.toString(countryJsonObject.getInt("todayDeaths"));
+                    }
+                    if (!countryJsonObject.isNull("recovered")) {
+                        recovered = Integer.toString(countryJsonObject.getInt("recovered"));
+                    }
+                    if (!countryJsonObject.isNull("active")) {
+                        active = Integer.toString(countryJsonObject.getInt("active"));
+                    }
+                    if (!countryJsonObject.isNull("critical")) {
+                        critical = Integer.toString(countryJsonObject.getInt("critical"));
+                    }
+
+                    values.add(new CountryStats(countryName,
+                            cases,
+                            todayCases,
+                            deaths,
+                            todayDeaths,
+                            recovered,
+                            active,
+                            critical));
                 }
+
+                values.remove(0);
 
             }
             else {
@@ -91,7 +134,7 @@ public class BackgroundTask extends AsyncTaskLoader<ArrayList<CountryStats>> {
 
                     JSONObject countryJsonObject = rootJsonArray.getJSONObject(i);
                     String country = countryJsonObject.getString("country");
-                    if(country.equals("India")) {
+                    if(country.equals(mMyCountry)) {
 
                         values.add(new CountryStats(countryJsonObject.getString("country"),
                                 Integer.toString(countryJsonObject.getInt("cases")),

@@ -35,7 +35,7 @@ public class CountriesFragment extends Fragment implements LoaderManager.LoaderC
     private CountryAdapter mAdapter;
     private ListView listView;
     private LinearLayout linearLayout1;
-    private AdView countryPopupAd;
+//    private AdView countryPopupAd;
 //    private ArrayList<CountryStats> country;
 
 
@@ -91,16 +91,18 @@ public class CountriesFragment extends Fragment implements LoaderManager.LoaderC
                 countryTodayDeaths.setText(currentCountryStats.getTodayDeaths());
 
 
-                countryPopupAd = customView.findViewById(R.id.country_popup_ad);
-                AdRequest adRequest = new AdRequest.Builder().build();
-                countryPopupAd.loadAd(adRequest);
+//                countryPopupAd = customView.findViewById(R.id.country_popup_ad);
+//                AdRequest adRequest = new AdRequest.Builder().build();
+//                countryPopupAd.loadAd(adRequest);
 
 
 
                 final PopupWindow popupWindow = new PopupWindow(
                         customView,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                        ViewGroup.LayoutParams.FILL_PARENT,
+                        ViewGroup.LayoutParams.FILL_PARENT);
+                popupWindow.setOutsideTouchable(false);
+                popupWindow.setAnimationStyle(R.style.popup_window_animation);
                 popupWindow.showAtLocation(linearLayout1, Gravity.CENTER, 0, 0);
 
 

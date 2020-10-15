@@ -21,6 +21,8 @@
             android:text="China"/>
 
         <TextView
+            android:textSize="15sp"
+            android:fontFamily="@font/baloo_tamma_2_regular"
             android:gravity="center_horizontal"
             android:textColor="@android:color/holo_blue_dark"
             android:id="@+id/current_country_cases"
@@ -30,6 +32,8 @@
             android:text="80894 C"/>
 
         <TextView
+            android:textSize="15sp"
+            android:fontFamily="@font/baloo_tamma_2_regular"
             android:gravity="center_horizontal"
             android:textColor="@android:color/holo_red_light"
             android:id="@+id/current_country_deaths"
@@ -39,6 +43,8 @@
             android:text="3237 D"/>
 
         <TextView
+            android:textSize="15sp"
+            android:fontFamily="@font/baloo_tamma_2_regular"
             android:gravity="center_horizontal"
             android:textColor="@android:color/holo_green_light"
             android:id="@+id/current_country_recovered"

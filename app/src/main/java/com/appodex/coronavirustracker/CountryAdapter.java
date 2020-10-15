@@ -34,13 +34,13 @@ public class CountryAdapter extends ArrayAdapter<CountryStats> {
         countryNameTextView.setText(currentCountry.getCountryName());
 
         TextView countryCasesTextView = listView.findViewById(R.id.current_country_cases);
-        countryCasesTextView.setText(currentCountry.getCases() + " C");
+        countryCasesTextView.setText(currentCountry.getCases());
 
         TextView countryDeathsTextView = listView.findViewById(R.id.current_country_deaths);
-        countryDeathsTextView.setText(currentCountry.getDeaths() + " D");
+        countryDeathsTextView.setText(currentCountry.getDeaths());
 
         TextView countryRecoveredTextView = listView.findViewById(R.id.current_country_recovered);
-        countryRecoveredTextView.setText(currentCountry.getRecovered() + " R");
+        countryRecoveredTextView.setText(currentCountry.getRecovered());
 
 
 

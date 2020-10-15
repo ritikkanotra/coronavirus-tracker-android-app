@@ -25,8 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:paddingTop="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:paddingBottom="0dp"
             android:orientation="horizontal">
 
@@ -46,12 +46,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:fontFamily="@font/baloo_tamma_2_medium"
                     android:id="@+id/country_cases_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:textColor="#4b41d3"
-                    android:textSize="40sp" />
+                    android:textSize="32sp" />
 
 
             </LinearLayout>
@@ -72,12 +73,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:fontFamily="@font/baloo_tamma_2_medium"
                     android:id="@+id/country_death_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:textColor="@android:color/holo_red_light"
-                    android:textSize="40sp" />
+                    android:textSize="32sp" />
 
 
             </LinearLayout>
@@ -87,8 +89,8 @@
 
         <LinearLayout
             android:paddingTop="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:paddingBottom="0dp"
             android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
@@ -111,12 +113,13 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:fontFamily="@font/baloo_tamma_2_medium"
                     android:id="@+id/country_recovered_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:textColor="#1d8c28"
-                    android:textSize="40sp" />
+                    android:textSize="32sp" />
 
 
             </LinearLayout>
@@ -146,13 +149,14 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:paddingRight="8dp"
-                        android:textSize="20sp"
-                        android:textColor="#6f750a"
                         android:id="@+id/country_active_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0" />
+                        android:fontFamily="@font/baloo_tamma_2_medium"
+                        android:paddingRight="8dp"
+                        android:text="0"
+                        android:textColor="#6f750a"
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -170,6 +174,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:fontFamily="@font/baloo_tamma_2_medium"
                         android:paddingRight="8dp"
                         android:textSize="20sp"
                         android:textColor="#6f750a"
@@ -231,24 +236,26 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/baloo_tamma_2_medium"
                     android:id="@+id/country_today_cases"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="0"
                     android:textColor="@android:color/holo_blue_dark"
-                    android:textSize="28sp" />
+                    android:textSize="30sp" />
 
                 <TextView
+                    android:fontFamily="@font/baloo_tamma_2_medium"
                     android:id="@+id/country_today_deaths"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="0"
                     android:textColor="@android:color/holo_red_light"
-                    android:textSize="28sp" />
+                    android:textSize="30sp" />
 
             </LinearLayout>
 

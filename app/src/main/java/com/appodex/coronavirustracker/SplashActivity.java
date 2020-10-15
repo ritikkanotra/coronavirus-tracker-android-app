@@ -3,7 +3,9 @@ package com.appodex.coronavirustracker;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -17,7 +19,7 @@ import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN_TIMEOUT = 1000;
+    private static int SPLASH_SCREEN_TIMEOUT = 600;
     private TextView currentVersionTextView;
     private String currentVersion;
 
