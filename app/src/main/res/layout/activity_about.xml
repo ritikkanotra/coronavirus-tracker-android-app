@@ -11,10 +11,10 @@
 
     <ImageView
         android:clickable="true"
-        android:background="?attr/selectableItemBackground"
+        android:background="?attr/actionBarItemBackground"
         android:onClick="closeActivity"
         android:tint="@android:color/holo_red_dark"
-        android:src="@drawable/icons_cross"
+        android:src="@drawable/ic_baseline_arrow_back_24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
