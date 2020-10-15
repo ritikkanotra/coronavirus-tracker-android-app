@@ -1,13 +1,17 @@
 package com.appodex.coronavirustracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
+
+    CardView mApiLinkView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +19,17 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
 
         getSupportActionBar().hide();
+
+        mApiLinkView = findViewById(R.id.tv_api_link);
+
+        mApiLinkView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/javieraviles/covidAPI"));
+//                intent.setData();
+                startActivity(intent);
+            }
+        });
 
     }
 
