@@ -1,19 +1,17 @@
 {
-  "version": 1,
+  "version": 2,
   "artifactType": {
     "type": "APK",
     "kind": "Directory"
   },
   "applicationId": "com.appodex.coronavirustracker",
-  "variantName": "release",
+  "variantName": "processReleaseResources",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "properties": [],
-      "versionCode": 20000,
-      "versionName": "2.0.0",
-      "enabled": true,
+      "versionCode": 20210131,
+      "versionName": "2.0.6",
       "outputFile": "app-release.apk"
     }
   ]
