@@ -48,16 +48,17 @@
         android:layout_margin="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="v 1.8.0"
+        android:text="v 0.0.0"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <ImageView
+        android:alpha="0.5"
         android:layout_marginBottom="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/appodex_dev_ico_v2_transparent"
+        android:src="@drawable/ritikkanotra_logo_dark"
         android:layout_width="130dp"
         android:layout_height="50dp"/>
 
