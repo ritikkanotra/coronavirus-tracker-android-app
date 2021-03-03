@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/mainBgColor">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +25,7 @@
             android:textSize="15sp"
             android:fontFamily="@font/baloo_tamma_2_regular"
             android:gravity="center_horizontal"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="@color/totalCasesColor"
             android:id="@+id/current_country_cases"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -35,7 +36,7 @@
             android:textSize="15sp"
             android:fontFamily="@font/baloo_tamma_2_regular"
             android:gravity="center_horizontal"
-            android:textColor="@android:color/holo_red_light"
+            android:textColor="@color/totalDeathColor"
             android:id="@+id/current_country_deaths"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -46,7 +47,7 @@
             android:textSize="15sp"
             android:fontFamily="@font/baloo_tamma_2_regular"
             android:gravity="center_horizontal"
-            android:textColor="@android:color/holo_green_light"
+            android:textColor="@color/totalRecoveredColor"
             android:id="@+id/current_country_recovered"
             android:layout_weight="1"
             android:layout_width="0dp"

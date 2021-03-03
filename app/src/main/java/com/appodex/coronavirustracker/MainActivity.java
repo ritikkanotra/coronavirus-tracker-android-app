@@ -3,6 +3,7 @@ package com.appodex.coronavirustracker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -18,6 +19,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,6 +29,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.Toolbar;
 
 import com.google.android.gms.ads.AdRequest;
@@ -34,6 +37,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,11 +58,18 @@ public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
     private String editedChanges;
     private ProgressDialog updateProgressDialog;
+    private MenuItem darkModeSwitch;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+//        initDarkModeSwitch();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
 
         CURRENT_VERSION = getCurrentVersion();
@@ -131,6 +142,38 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 5000);
 
+    }
+
+    private void switchDarkMode() {
+
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                // Night mode is not active, we're using the light theme
+                darkModeSwitch.setChecked(true);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                darkModeSwitch.setChecked(false);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                // Night mode is active, we're using dark theme
+                break;
+        }
+
+    }
+
+    private void initDarkModeSwitch() {
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                // Night mode is not active, we're using the light theme
+                darkModeSwitch.setChecked(false);
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                darkModeSwitch.setChecked(true);
+                // Night mode is active, we're using dark theme
+                break;
+        }
     }
 
     private void checkVersion() {
@@ -296,6 +339,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = new MenuInflater(this);
         menuInflater.inflate(R.menu.menu_activity_main, menu);
+
+        darkModeSwitch = menu.getItem(0);
+
+
+//        darkModeSwitch = findViewById(R.id.item_dark_mode_switch);
+        initDarkModeSwitch();
+
         return true;
     }
 
@@ -308,6 +358,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
+
+            case R.id.item_dark_mode_switch:
+//                item.setChecked(true);
+                switchDarkMode();
         }
 
         return super.onOptionsItemSelected(item);
