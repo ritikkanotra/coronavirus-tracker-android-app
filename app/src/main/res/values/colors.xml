@@ -3,4 +3,18 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="mainBgColor">#FFFFFF</color>
+
+    <color name="totalCasesColor">#4b41d3</color>
+    <color name="totalDeathColor">@android:color/holo_red_light</color>
+    <color name="totalRecoveredColor">#1d8c28</color>
+    <color name="extraColor">#6f750a</color>
+
+    <color name="cardBgCasesColor">#bebae0</color>
+    <color name="cardBgDeathColor">#eac5c5</color>
+    <color name="cardBgRecoveredColor">#bee2cd</color>
+    <color name="cardBgExtraColor">#e6e8c5</color>
+
+    <drawable name="ritikkanotra_logo">@drawable/ritikkanotra_logo_dark</drawable>
+
 </resources>

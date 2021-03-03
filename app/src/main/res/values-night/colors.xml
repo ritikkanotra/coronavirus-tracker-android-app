@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#210168</color>
+    <color name="colorPrimaryDark">#000229</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="mainBgColor">#00011A</color>
+
+    <color name="totalCasesColor">#D1DCFF</color>
+    <color name="totalDeathColor">#FFD7D1</color>
+    <color name="totalRecoveredColor">#D6FFDA</color>
+    <color name="extraColor">#FFFFF5</color>
+
+
+    <color name="cardBgCasesColor">#1E0052</color>
+    <color name="cardBgDeathColor">#520400</color>
+    <color name="cardBgRecoveredColor">#005223</color>
+    <color name="cardBgExtraColor">#524900</color>
+
+    <drawable name="ritikkanotra_logo">@drawable/ritikkanotra_logo_light</drawable>
+
+</resources>

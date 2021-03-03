@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="20dp"
+    android:background="@color/mainBgColor"
     android:layout_height="match_parent">
 
     <TextView
@@ -20,7 +21,7 @@
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/baloo_tamma_2_medium"
         android:text="0"
-        android:textColor="#4b41d3"
+        android:textColor="@color/totalCasesColor"
         android:textSize="64sp" />
 
     <TextView
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:fontFamily="@font/baloo_tamma_2_medium"
-        android:textColor="@android:color/holo_red_light"
+        android:textColor="@color/totalDeathColor"
         android:layout_marginBottom="24dp"
         android:textSize="64sp"/>
 
@@ -47,7 +48,7 @@
 
     <TextView
         android:fontFamily="@font/baloo_tamma_2_medium"
-        android:textColor="#1d8c28"
+        android:textColor="@color/totalRecoveredColor"
         android:id="@+id/global_recovered_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

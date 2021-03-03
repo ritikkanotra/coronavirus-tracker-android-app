@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/item_dark_mode_switch"
+        android:checkable="true"
+        app:showAsAction="never"
+        android:title="Dark Mode" />
+
+    <item
         android:id="@+id/item_about"
         android:title="About"
         app:showAsAction="never" />
