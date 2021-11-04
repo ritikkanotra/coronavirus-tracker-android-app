@@ -10,6 +10,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +85,10 @@ public class MyCountryFragment extends Fragment implements LoaderManager.LoaderC
         if(finalLoc != null) {
             onLocationChanged(finalLoc);
             myCountry = getCountryName(finalLoc);
+            setMyCountry();
         }
+
+        Log.i("rk_debug", myCountry);
 
 
         LoaderManager loaderManager = getLoaderManager();
@@ -93,6 +97,14 @@ public class MyCountryFragment extends Fragment implements LoaderManager.LoaderC
 
         return view;
 
+    }
+
+    private void setMyCountry() {
+        switch (myCountry) {
+            case "United States":
+                myCountry = "USA";
+                break;
+        }
     }
 
     @NonNull
